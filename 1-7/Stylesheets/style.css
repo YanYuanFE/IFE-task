@@ -1,0 +1,648 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    min-width: 1280px;
+    margin: 0 auto;
+}
+
+header {
+    height: 55px;
+    line-height: 55px;
+    /*position: absolute;*/
+}
+
+.head-left {
+    height: 55px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.head-logo {
+    float: left;
+    height: 55px;
+}
+
+.head-logo img {
+    padding-left: 58px;
+    vertical-align: middle;
+}
+
+.logo-text {
+    float: left;
+    padding-top: 5px;
+    padding-left: 10px;
+    height: 55px;
+}
+
+.logo-title {
+    font-weight: bold;
+    font-size: 21px;
+    font-family: SimHei;
+}
+
+.head-right {
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 635px;
+    text-align: right;
+    padding-right: 66px;
+}
+
+.head-right a {
+    display: inline-block;
+    position: relative;
+    height: 55px;
+    line-height: 55px;
+    color: #8b8a91;
+    margin-left: 45px;
+}
+
+.head-right .current {
+    color: #e74f4d;
+}
+
+
+/*banner图*/
+
+.banner-section {
+    position: relative;
+    height: 687px;
+}
+
+.banner-section:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.banner-mask {
+    background: url(../Images/banner-mask.jpg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: 99;
+    background-size: 100% auto
+}
+
+.banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 687px;
+    background: url(../Images/banner.jpg) no-repeat;
+    background-size: 100% auto;
+}
+
+.banner-text {
+    position: absolute;
+    top: 230px;
+    left: 115px;
+}
+
+.banner-title {
+    font-size: 60px;
+    font-family: Microsoft YaHei;
+    color: #fff;
+}
+
+.text {
+    margin-top: 27px;
+}
+
+.banner-text-inner {
+    font-size: 21px;
+    font-family: Microsoft YaHei;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.banner-button {
+    font-size: 30px;
+    font-family: Microsoft YaHei;
+    color: #fff;
+    background-color: #e74f4d;
+    display: inline-block;
+    width: 335px;
+    height: 67px;
+    text-align: center;
+    line-height: 67px;
+    margin-top: 64px;
+}
+
+
+/*内容二*/
+
+.menu-section {
+    height: 250px;
+}
+
+.menu-list {
+    float: left;
+    width: 25%;
+}
+
+.menu-img {
+    height: 130px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 130px;
+}
+
+.menu-text {
+    text-align: center;
+    font-size: 14px;
+    font-family: SimHei;
+    color: #767777;
+    height: 52px;
+    border-right: 1px solid #aba6a5;
+}
+
+
+/*内容三*/
+
+.img-section {
+    height: 360px;
+    background: url(../Images/bg03.jpg) no-repeat;
+    background-size: 100% auto;
+    text-align: center;
+}
+
+.img-wrapper {
+    padding-top: 88px;
+}
+
+.img-text {
+    margin-top: 50px;
+}
+
+.text-lg {
+    font-size: 53.59px;
+    font-family: SimHei;
+    color: #8d8581;
+}
+
+
+/*内容4*/
+
+.map-section {
+    height: 340px;
+    background: url(../Images/searchmap.jpg) no-repeat;
+    background-size: 100% auto;
+    text-align: center;
+    position: relative;
+}
+
+.map-text {
+    height: 70px;
+    color: #fff;
+    padding-top: 53px;
+}
+
+.map-title {
+    font-size: 21px;
+    font-family: Microsoft YaHei;
+    color: #fff;
+}
+
+.map-text-inner {
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    margin-top: 17px;
+}
+
+.map-form {
+    margin-top: 53px;
+}
+
+input {
+    border: 0;
+}
+
+.research-btn {
+    width: 235px;
+    height: 35px;
+    background-color: #be4e48;
+    color: #fff;
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+}
+
+select {
+    width: 235px;
+    height: 35px;
+    color: #ccc;
+    /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+    border: 1px solid #ccc;
+    /*很关键：将默认的select选择框样式清除*/
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    /*在选择框的最右侧中间显示小箭头图片*/
+    background: url("../Images/select.png") no-repeat scroll right center #fff;
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right: 14px;
+    line-height: 25px;
+}
+
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+
+select::-ms-expand {
+    display: none;
+}
+
+select option {
+    background-color: #e3e3e4;
+    color: #fff;
+    
+
+}
+
+
+/*内容五*/
+
+.activity-section {
+    height: 605px;
+    background: url(../Images/bg04.jpg);
+}
+
+.activity-wrapper {
+    height: 395px;
+    padding: 100px 115px;
+}
+
+.activity-list {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+
+
+.activity-img img {
+    padding: 15px 8px 11px 8px;
+    border: 1px solid #d9d5d4;
+}
+
+.activity-title {
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    padding-top: 13px;
+}
+
+.activity-text {
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    color: #ccc;
+    padding-top: 8px;
+}
+
+
+/*内容六*/
+
+.bj-section {
+    height: 565px;
+}
+
+.bj-left {
+    height: 565px;
+    background: url(../Images/01.jpg) no-repeat;
+    background-size:100% auto;
+    width: 66%;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+
+.bj-left-title {
+    font-size: 49.47px;
+    font-family: Microsoft YaHei;
+    color: #fff;
+    margin-top: 133px;
+}
+
+.bj-left-en {
+    font-size: 157.79px;
+    font-family: Microsoft YaHei;
+    color: #fff;
+    margin-top: -38px;
+}
+
+.bj-left-text {
+    font-size: 21.91px;
+    font-family: Microsoft YaHei;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.bj-left:after {
+    content: "";
+    position: absolute;
+    top: 268px;
+    right: 0px;
+    width: 0px;
+    height: 0px;
+    border-right: 27px solid #fff;
+    border-top: 14px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+.bj-right {
+    float: right;
+    text-align: center;
+    width: 34%;
+}
+
+
+
+
+.bj-right-img {
+    padding-top: 160px;
+    margin: 0 auto;
+}
+
+.bj-right-btn {
+    width: 106px;
+    height: 32px;
+    display: inline-block;
+    border: 1px solid #e46868;
+    color: #e46868;
+    font-size: 12px;
+    line-height: 32px;
+}
+
+.list-btn {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-left: 12px;
+    float: left;
+}
+
+.now {
+    background-color: #929292;
+}
+
+.bj-list {
+    width: 80px;
+    height: 13px;
+    margin: 25px auto;
+}
+/*内容七*/
+.more-section{
+    height: 520px;
+    
+    text-align: center;
+}
+.more-text{
+    font-size: 21px;
+    font-family: SimHei;
+    padding-bottom: 6px;
+}
+.more-wrapper{
+     width: 33.3%;
+    height: 520px;
+    float: left;
+}
+.red-bg{
+    background-color:#e74f4d;
+    color: #fff;
+
+}
+.white-bg{
+    background-color:#fff;
+    color: #e74f4d;
+
+}
+.more-line{
+    width: 32px;
+    height: 2px;
+    background-color: #fff;
+    margin: 10px auto;
+}
+.red-line{
+    background-color:#e74f4d;
+}
+.grey{
+    background-color: #ccc;
+}
+.more-btn{
+    width: 171px;
+    height: 46px;
+    line-height: 46px;
+    background-color:#e74f4d;
+    color: #fff;
+    border:1px solid #fff;
+    display: inline-block;
+    font-size: 21px;
+    font-family: SimHei;
+}
+.white-btn{
+    background-color:#fff;
+    color: #e74f4d;
+    border:1px solid #e74f4d;
+}
+.more-content{
+    padding-top: 169px;
+}
+.more-img{
+    height: 520px;
+    background: url(../Images/02.jpg) no-repeat;
+    background-size: 100% auto;
+    position: relative;
+}
+.more-img:after {
+    content: "";
+    position: absolute;
+    top: 246px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+    border-left: 27px solid #fff;
+    border-top: 14px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+/*内容八*/
+.join-section{
+    text-align: center;
+    height: 750px;
+}
+
+.join-text{
+    font-size: 21px;
+    font-family: SimHei;
+    width: 445px;
+    height: 87px;
+    padding-top: 111px;
+    margin: 0 auto;
+}
+
+.join-text-inner{
+    font-size:12px;
+    font-family: Microsoft YaHei;
+    color: #ccc;
+}
+.join-content{
+    width: 1006px;
+    height: 311px;
+    margin: 95px auto;
+    text-align: center;
+}
+.join-inner{
+    float: left;
+    width: 295px;
+    height: 300px;
+    text-align: left;
+}
+.join-inner-title{
+    font-size: 14px;
+    font-family: SimHei;
+    
+}
+.join-inner-text{
+    font-family: SimSun;
+    font-size: 12px;
+    padding-top: 25px;
+    color: #ccc;
+    line-height: 22px;
+
+}
+.join-inner-more{
+    text-align: right;
+    color: #333;
+    margin-bottom: 20px;
+}
+.join-form{
+    width: 666px;
+    height: 285px;
+    float: right;
+}
+.name,.age,.telephone,.address{
+    width: 313px;
+    height: 43px;
+    background-color: #ededee;
+    margin-bottom: 16px;
+    margin-left: 20px;
+    float: left;
+    font-family: SimSun;
+    font-size: 12px;
+    color: #333;
+}
+.description{
+    width: 641px;
+    height: 119px;
+    background-color: #ededee;
+    margin-left: 20px;
+    border:0;
+    font-family: SimSun;
+    font-size: 12px;
+    color: #333;
+}
+.submit{
+    width: 641px;
+    height: 43px;
+    line-height: 43px;
+    margin-left: 20px;
+    border:0;
+    background-color: #ededee;
+    font-size: 14px;
+    font-family: SimHei;
+}
+/*内容九*/
+.contact-section{
+    background-color: #32353e;
+    height: 359px;
+    color: #fff;
+    text-align: center;
+}
+.contact-text{
+    width: 469px;
+    height: 102px;
+    margin: 0 auto;
+    padding-top: 90px;
+}
+.contact-title{
+    font-size: 21px;
+    font-family: SimHei;
+}
+.contact-text-inner{
+    font-family: SimSun;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 8px;
+}
+.contact-style{
+    width: 510px;
+    margin: 0 auto;
+    overflow: auto;
+}
+.email{
+    width: 431px;
+    height: 41px;
+    line-height: 41px;
+    font-size:14px;
+    font-family: Microsoft YaHei;
+    float: left;
+}
+.btn{
+    width: 79px;
+    height: 41px;
+    line-height: 41px;
+    text-align: center;
+    color: #fff;
+    background-color: #686166;
+    float: left;
+}
+.contact-icon{
+    width: 215px;
+    height: 30px;
+    margin: 35px auto;
+}
+.icon-item{
+    float: left;
+    padding-left: 27px;
+}
+/*底部*/
+footer{
+    height: 58px;
+    background-color: #2f3038;
+    color: #fff;
+}
+.foot-left{
+    padding-top: 27px;
+    padding-left: 100px;
+    float: left;
+}
+.foot-right{
+    padding-top: 27px;
+    padding-right: 38px;
+    float: right;
+}
+.left-text,.right-text{
+
+    font-family: SimSun;
+    font-size: 12px;
+}
