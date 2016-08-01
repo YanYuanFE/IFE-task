@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多个表单项的动态校验</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<!-- 表单验证 -->
+<form method="post" action="">
+	<label for="name">名称</label>
+	<input type="text" name="name" id="name"/>
+	<br/>
+	<!-- 显示验证信息 -->
+	<span id="nameCheck"></span>
+	
+	<br/>
+	<label for="password">密码</label>
+	<input type="password" name="password" id="psw">
+	<br/>
+	<span id="pswCheck"></span>
+	
+	<br/>
+	<label for="passwordcheck">密码确认</label>
+	<input type="password" name="password" id="pswre"/>
+	<br/>
+	<span id="pswreCheck"></span>
+	
+	<br/>
+	<label for="email">邮箱</label>
+	<input type="email" name="email" id="email"/>
+	<br/>
+	<span id="emailCheck"></span>
+	
+	<br/>
+	<label for="tel">手机</label>
+	<input type="number" name="tel" id="tel"/>
+	<br/>
+	<span id="telCheck"></span>
+	
+	<br/>
+	<input id="submit" class="submit" type="button" value="提交"/>
+
+
+</form>
+	<script type="text/javascript" src="tablecheck.js"></script>
+</body>
+</html>

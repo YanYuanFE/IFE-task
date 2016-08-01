@@ -1,0 +1,38 @@
+fieldset{
+	width: 1200px;
+	margin: 20px auto;
+	border-radius: 15px;
+	border: 2px solid #cadfe8;
+}
+#aqi-chart-wrap{
+	width: 1200px;
+	margin: 20px auto;
+	position: relative;
+	padding-top: 20px;
+	text-align: center;
+	border: 2px solid #3E74c6;
+	box-shadow:  0 2px 5px #ccc;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.data-box{
+	display: inline-block;
+	background-color: #609Fc7;
+	animation: Rise .5s ease-in-out;
+	position: relative;
+
+
+}
+.title{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+@keyframes Rise{
+	0%{
+		bottom:-400px;
+	}
+	100%{
+		bottom: 0;
+	}
+}

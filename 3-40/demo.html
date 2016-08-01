@@ -1,0 +1,237 @@
+<html>  
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<head>
+  <style type="text/css">
+ 
+td{ text-align: center;}
+  </style>
+  <script type="text/javascript">
+    
+window.onload=function(){
+  var  Calender=function(){
+    this.Init.apply(this,arguments);
+  }
+  Calender.prototype={
+    Init:function(container,options){
+      this.date=new Date();
+      this.year=this.date.getFullYear();
+      this.month=this.date.getMonth()+1;
+      this.day=this.date.getDate();
+      this.week=this.date.getDay();
+      this.weekstart=this.getWeekDay(this.year, this.month-1, 1);
+      this.monthdays= this.getMonthDays(this.year,this.month);
+      this.containerDiv=document.getElementById(container);
+      this.options=options!=null?options:{
+        border:'1px solid green',
+        width:'400px',
+        height:'200px',
+        backgroundColor:'lightgrey',
+        fontColor:'blue'
+      }
+    },
+    getMonthDays:function(year,month){
+      var date=new Date(year,month,0);
+      return date.getDate();
+    },
+    getWeekDay:function(year,month,day){
+      var date=new Date(year,month,day);
+      return date.getDay();
+    },
+    View:function(){
+      var tablestr='<table>';
+       tablestr+='<tr><td colspan="3"></td><td>年:'+this.year+'</td><td colspan="3">月：'+this.month+'</td></tr>';
+      tablestr+='<tr><td width="14%">日</td><td width="14%">一</td><td width="14%">二</td><td width="14%">三</td><td width="14%">四</td><td width="14%">五</td><td width="14%">六</td></tr>';
+      var index=1;
+      //判断每月的第一天在哪个位置
+      var style='';
+      if(this.weekstart<7)
+      {
+        tablestr+='<tr>';
+         for (var i = 0; i <this.weekstart; i++) {
+           tablestr+='<td></td>';
+         };
+         for (var i = 0; i < 7-this.weekstart; i++) {
+          style=this.day==(i+1)?"background-Color:green;":"";
+           index++;
+           tablestr+='<td style="'+style+'" val='+(this.year+'-'+this.month+'-'+(i+1))+'>'+(i+1)+'</td>';
+         };
+        tablestr+='</tr>';
+ 
+      }
+      ///剩余天数对应的位置
+ 
+      //判断整数行并且对应相应的位置
+      var remaindays=this.monthdays-(7-this.weekstart);
+      var row=Math.floor(remaindays%7==0?remaindays/7:((remaindays/7)+1)) ;
+      var  count=Math.floor(remaindays/7);
+      for (var i = 0; i < count; i++) {
+         tablestr+='<tr>';
+         for (var k = 0; k < 7; k++) {
+           style=this.day==(index+k)?"background-Color:green;":"";
+           tablestr+='<td style="'+style+'" val='+(this.year+'-'+this.month+'-'+(index+k))+'>';
+           tablestr+=index+k;
+           tablestr+='</td>';
+         };
+         tablestr+='</tr>';
+         index+=7;
+      };
+ 
+      //最后剩余的天数对应的位置(不能填充一周的那几天)
+      var remaincols=this.monthdays-(index-1);
+      tablestr+='<tr>';
+      for (var i = 0; i < remaincols; i++) {
+        style=this.day==index?"background-Color:green;":"";
+        tablestr+='<td style="'+style+'" val='+(this.year+'-'+this.month+'-'+(index))+'>';
+        tablestr+=index;
+        tablestr+='</td>';
+        index++;
+      };
+      tablestr+='</tr>';
+      tablestr+='</table>';
+      return tablestr;
+    },
+    Render:function(){
+      var calenderDiv=document.createElement('div');
+      calenderDiv.style.border=this.options.border;
+      calenderDiv.style.width=this.options.width;
+      calenderDiv.style.height=this.options.height;
+      calenderDiv.style.cursor='pointer';
+      calenderDiv.style.backgroundColor=this.options.backgroundColor;
+      // calenderDiv.style.color=this.options.fontColor;
+      calenderDiv.style.color='red' ;
+ 
+      calenderDiv.onclick=function(e){
+        var evt=e||window.event;
+        var  target=evt.srcElement||evt.target;
+ 
+        if(target&&target.getAttribute('val'))
+        {
+ 
+          alert(target.getAttribute('val'));
+        }
+       
+      }
+      var tablestr=this.View();
+      this.tablestr=tablestr;
+      calenderDiv.innerHTML=tablestr;
+      var div=document.createElement('div');
+      div.style.width='auto';
+      div.style.height='auto';
+       div.appendChild(calenderDiv);
+ 
+       ///翻页div
+      var pagerDiv=document.createElement('div');
+      pagerDiv.style.width='auto';
+      pagerDiv.style.height='auto';
+ 
+        var that=this;
+ 
+ 
+        ///重新设置参数
+      var  resetPara=function(year,month,day){
+          that.date=new Date(year,month,day);
+          that.year=that.date.getFullYear();
+          that.month=that.date.getMonth()+1;
+          that.day=that.date.getDate();
+          that.week=that.date.getDay();
+          that.weekstart=that.getWeekDay(that.year, that.month-1, 1);
+          that.monthdays= that.getMonthDays(that.year,that.month);
+      }
+ 
+      //上一页
+      var preBtn=document.createElement('input');
+       preBtn.type='button';
+       preBtn.value='<';
+ 
+       preBtn.onclick=function(){
+           that.containerDiv.removeChild(div);
+           resetPara(that.year,that.month-2,that.day);
+           that.Render();
+ 
+       }
+       //下一页
+       var nextBtn=document.createElement('input');
+       nextBtn.type='button';
+       nextBtn.value='>';
+      
+       nextBtn.onclick=function(){
+           that.containerDiv.removeChild(div);
+           resetPara(that.year,that.month,that.day);
+           that.Render();
+ 
+       }
+ 
+       pagerDiv.appendChild(preBtn);
+       pagerDiv.appendChild(nextBtn);
+       div.appendChild(pagerDiv);
+ 
+       var dropDiv=document.createElement('div');
+       var  dropdivstr='';
+       //选择年份
+       dropdivstr+='<select id="ddlYear">';
+       for (var i = 1900; i <= 2100; i++) {
+        dropdivstr+= 
+        i==that.year
+        ?'<option value="'+i+'" selected="true">'+i+'</option>'
+        : '<option value="'+i+'">'+i+'</option>';
+       };
+       dropdivstr+='</select>';
+       
+      //选择月份
+      dropdivstr+='<select id="ddlMonth">';
+       for (var i = 1; i <= 12; i++) {
+        dropdivstr+=
+        i==that.month
+        ?'<option value="'+i+'" selected="true">'+i+'</option>'
+        : '<option value="'+i+'">'+i+'</option>';
+       };
+       dropdivstr+='</select>';
+       dropDiv.innerHTML=dropdivstr;
+       div.appendChild(dropDiv);
+      that.containerDiv.appendChild(div);
+   
+ 
+       ///绑定选择年份和月份的事件
+       var ddlChange=function(){
+           var ddlYear=document.getElementById('ddlYear');
+          var ddlMonth=document.getElementById('ddlMonth');
+          var  yearIndex=ddlYear.selectedIndex;
+          var year=ddlYear.options[yearIndex].value;
+          var  monthIndex=ddlMonth.selectedIndex;
+          var month=ddlMonth.options[monthIndex].value;
+          that.containerDiv.removeChild(div);
+          resetPara(year,month-1,that.day);
+          that.Render();
+       }
+ 
+      ddlYear.onchange=function(){
+         ddlChange();
+      }
+ 
+       ddlMonth.onchange=function(){
+         ddlChange();
+         
+      }
+    }
+ 
+  }
+ 
+ 
+  var  calender=new Calender('dvTest',{
+        border:'1px solid green',
+        width:'400px',
+        height:'200px',
+        backgroundColor:''
+        }
+        );
+  calender.Render();
+  
+}
+  </script>
+  
+  
+</head>
+<body>
+ <div id="dvTest"></div>
+</body>
+</html>

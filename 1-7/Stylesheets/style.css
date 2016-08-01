@@ -70,21 +70,28 @@ header {
     display: inline-block;
     position: relative;
     height: 55px;
+    width: 56px;
+    text-align: center;
     line-height: 55px;
     color: #8b8a91;
     margin-left: 45px;
+    
 }
 
 .head-right .current {
     color: #e74f4d;
-}
 
+}
+.hover-a{
+    border-bottom: 2px solid #e74f4d;
+}
 
 /*banner图*/
 
 .banner-section {
     position: relative;
     height: 687px;
+    margin-top: 2px;
 }
 
 .banner-section:before {
@@ -328,7 +335,7 @@ select option {
 
 .bj-left {
     height: 565px;
-    background: url(../Images/01.jpg) no-repeat;
+    background: url(../Images/01.jpg) bottom center no-repeat;
     background-size:100% auto;
     width: 66%;
     float: left;
@@ -560,10 +567,12 @@ select option {
     font-family: SimSun;
     font-size: 12px;
     color: #333;
+
 }
 .submit{
     width: 641px;
     height: 43px;
+    margin-top: 10px;
     line-height: 43px;
     margin-left: 20px;
     border:0;
@@ -597,7 +606,12 @@ select option {
 .contact-style{
     width: 510px;
     margin: 0 auto;
-    overflow: auto;
+    /*overflow: auto;*/
+}
+.contact-style:after{
+    content: "";
+    display: block;
+    clear: both;
 }
 .email{
     width: 431px;
