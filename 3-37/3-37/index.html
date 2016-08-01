@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UI组件之浮出层</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <header>
+        <a href="#" class="login" id="login">登陆</a>
+    </header>
+    <main>
+    </main>
+    <div class="loginBox" id="loginBox">
+        <div class="loginHead" id="loginHead">
+        	<span class="login-title">登陆</span>
+        	<span id="login-close">X</span>
+        </div>
+        <form class="loginForm">
+            <label for="username">用户：
+                <input class="Input" type="text" id=username>
+            </label>
+            <label for="password">密码：
+                <input type="password" class="Input" id="password">
+            </label>
+            <input type="button" class="loginBtn" value="登陆">
+        </form>
+    </div>
+    <div id="loginMask"></div>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

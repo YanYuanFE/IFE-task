@@ -1,0 +1,58 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+form{
+	margin:50px auto;
+	
+	width: 430px;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+/*确认密码处对齐*/
+label:nth-of-type(3){
+	margin-left: -29px;
+}
+input{
+	/*display: block;*/
+    width: 350px;
+    height: 22px;
+    padding: 6px 12px;
+    /*margin-left: 15px;*/
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+span{
+	margin-left: 46px;
+	/*display: none;*/
+}
+.submit{
+	width: 80px;
+	height: 35px;
+	line-height: 35px;
+	padding: 0;
+    float: right;
+    /*margin-right: 20px;*/
+        color: #fff;
+    background-color: #337ab7;
+    border-color: #46b8da;
+}
