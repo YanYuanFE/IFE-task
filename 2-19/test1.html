@@ -1,0 +1,189 @@
+<!DOCTYPE>
+<html>
+<style>
+ body {
+    margin: 0;
+    padding: 0;
+}
+
+
+#mop {
+    border: 2px solid #f40;
+    float: left;
+    margin-left: 300px;
+    margin-top: 100px;
+    vertical-align: bottom;
+}
+
+.fac {
+    width: 10px;
+    height: 100px;
+    float: left;
+    list-style: none;
+    position: absolute;
+}
+
+.fac a {
+    display: block;
+}
+
+
+</style>
+<script>
+
+
+window.onload = function() {
+    var mop = document.getElementById("mop"),
+        frag = document.createDocumentFragment();
+    (function() {
+        var li, a;
+        for (var i = 1; i <= 50; i++) {
+            li = document.createElement("li");
+            li.className = "fac";
+            li.id = "f" + i;
+            a = document.createElement("a");
+            li.appendChild(a);
+            frag.appendChild(li);
+        }
+        mop.appendChild(frag);
+    })();
+
+    var facs = document.getElementsByTagName("li"),
+        set = [],
+        steps = [];
+    jOne.each(facs, function(i) {
+        var hsb = "rgb(" + rand(0, 200) + "," + rand(50, 250) + ", " + rand(50, 200) + ")", // 
+            h = rand(50, 200);
+        set.push({
+            w: h,
+            id: this.id
+        });
+        jOne.setStyle(this, {
+            height: h + "px",
+            left: i * 10
+        });
+        jOne.setStyle(this.children[0], {
+            background: hsb,
+            width: "10px",
+            height: h + "px"
+        })
+    });
+
+    var steps = {
+        q: [],
+        m: function() {
+            this.q.push(arguments[0]);
+        }
+    }
+    var bub = bubble();
+    bub.addOb(steps);
+    bub.sort(set);
+
+    var dq = createDq();
+    dq.setDq(steps.q);
+    dq.run(function() {
+        var ids = arguments[0].split(/-/);
+        var elem1 = document.getElementById(ids[0]),
+            elem2 = document.getElementById(ids[1]),
+            old;
+
+        old = elem1.removeChild(elem1.children[0]);
+        elem1.appendChild(elem2.removeChild(elem2.children[0]));
+        elem2.appendChild(old);
+        elem1.id = ids[1];
+        elem2.id = ids[0];
+    });
+
+};
+
+function createDq() {
+    var dq = [],
+        size = 0;
+    return {
+        setDq: function(queue) {
+            dq = queue;
+            size = queue.length;
+        },
+        queue: function(fn) {
+            size++;
+            dq.push(fn);
+        },
+        dqueue: function() {
+            size--;
+            return dq.shift();
+        },
+        run: function(fn) {
+            var me = this,
+                timer;
+
+            timer = setInterval(function() {
+                if (size <= 1) {
+                    clearInterval(timer);
+                }
+                fn.call(null, me.dqueue());
+            }, 30);
+        }
+    }
+}
+
+function bubble() {
+    var obs = [];
+
+    function compare(x, y) {
+        return x.w - y.w;
+    }
+
+    function swap(a, i, j) {
+        var t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+
+    function proxy(a, i, j) {
+        notify(a[i].id + "-" + a[j].id);
+        swap.apply(null, arguments);
+    }
+
+    function notify(arg) {
+        obs[0].m.call(obs[0], arg);
+    }
+    return {
+        addOb: function(ob) {
+            obs.push(ob);
+        },
+        sort: function(arr) {
+            var len = arr.length;
+            for (var x = 1; x < len; x++) {
+                for (var y = 0; y < len - x; y++) {
+                    if (compare(arr[y], arr[y + 1]) > 0) {
+                        proxy(arr, y, y + 1);
+                    }
+                }
+            }
+        }
+    }
+}
+var jOne = {
+    each: function(obj, callback) {
+        var i = 0,
+            len = obj.length;
+        for (var value = obj[0]; i < len && callback.call(value, i, value) !== false; value = obj[++i]) {};
+    },
+    setStyle: function(elem, opt) {
+        var o, sty = elem.style;
+        for (var o in opt) {
+            sty[o] = opt[o]
+        }
+    }
+}
+
+function rand(a, b) {
+    var ret = Math.random() * (b - a) + a;
+    return ret >> 0;
+}
+
+//-->
+</script>
+<ul id="mop"></ul>
+
+</html>
