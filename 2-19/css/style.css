@@ -1,0 +1,35 @@
+#container{
+	margin: 50px auto;
+	text-align: center;
+}
+#input{
+	height:30px;
+}
+.left{
+	margin-right: 40px;
+}
+input[type="button"]{
+	height: 25px;
+	line-height: 22px;
+	font-size: 16px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: none;
+	border:1px solid #ccc;
+	outline: none;
+	cursor: pointer;
+}
+.quene-item{
+	display: inline-block;
+	padding: 5px;
+	margin: 0 5px;
+	background-color: #ff7171;
+	color: #fff;
+	cursor: pointer;
+	vertical-align: bottom;
+	/*height:0px;
+	transition:height 20s ease;*/
+}
+#wrapper{
+	text-align: center;
+}
