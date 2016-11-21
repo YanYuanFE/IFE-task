@@ -1,0 +1,44 @@
+.root{
+	width: 500px;
+	height: 200px;
+	padding: 20px 0 20px 0;
+	margin-bottom: 30px;
+}
+div{
+	border: 1px solid #666;
+	float: left;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.child-1{
+	width: 235px;
+	height: 160px;
+	margin-left: 10px;
+	padding: 30px 0 30px 0;
+}
+.child-2{
+	width: 102px;
+	height: 100px;
+	margin-left: 10px;
+	padding: 20px 0 20px 0;
+}
+.child-3{
+	width: 36px;
+	height: 60px;
+	margin-left: 10px;
+}
+.box{
+	clear: both;
+	border: none;
+}
+input[type="button"]{
+	background: #fff;
+	color: #e71d36;
+	border:2px solid #e71d36;
+	width: 100px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	outline: none;
+	cursor: pointer;
+}

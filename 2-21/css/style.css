@@ -1,0 +1,55 @@
+#container{
+	margin: 50px auto;
+	text-align: center;
+}
+#tagInput{
+	height:30px;
+	border-color: #fec9c9;
+}
+#hobbyBox{
+	border-color: #fec9c9;
+}
+label{
+	display: block;
+	margin-bottom: 20px;
+	font-size: 18px;
+	font-weight: bold;
+}
+input[type="button"]{
+	height: 25px;
+	line-height: 22px;
+	font-size: 16px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: none;
+	border:1px solid #ccc;
+	outline: none;
+	cursor: pointer;
+}
+.quene-item{
+	font-size: 14px;
+	line-height: 50px;
+	display: inline-block;
+	padding: 10px;
+	margin: 0 10px;
+	background-color: #fe4365;
+	color: #fff;
+	cursor: pointer;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+.quene-item:hover{
+	background-color: #f9cdad;
+}
+.active{
+	background-color: blue;
+	display: inline-block;
+	padding: 10px;
+	margin: 0 10px;
+	color: #fff;
+	cursor: pointer;
+}
+#tagShow,#hobbyShow{
+	text-align: center;
+}
