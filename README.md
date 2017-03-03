@@ -1,4 +1,5 @@
 # IFE-task
+<<<<<<< HEAD
 ## 2016百度IFE前端技术学院实战任务
 
 #### 任务十七：零基础JavaScript编码（五）
@@ -229,3 +230,15 @@ init();
 [MDN JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
 
 http://v.youku.com/v_show/id_XNTM1NTQxMDMy.html http://v.youku.com/v_show/id_XNjIwNTEzMTA0.html?from=y1.2-1-176.3.3-2.1-1-1-2-0
+=======
+百度IFE前端技术学院  
+
+[2016百度前端技术学院](http://yanyuanfe.cn/IFE-task/IFE2016/)  
+
+2016百度前端技术学院：http://yanyuanfe.cn/IFE-task/IFE2016  
+  
+  
+[2017百度前端技术学院](http://yanyuanfe.cn/IFE-task/IFE2017/)  
+
+2017百度前端技术学院：http://yanyuanfe.cn/IFE-task/IFE2017
+>>>>>>> 7e267e7cbc9f95c419c493ecc33f09ffae358778
