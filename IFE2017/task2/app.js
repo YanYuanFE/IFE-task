@@ -13,7 +13,7 @@ Observer.prototype.each = function (obj) {
 	*/
 	for(var key in obj) {
 		if(obj.hasOwnProperty(key)){
-			if (typeof obj[key] === 'object') {
+			if (Object.prototype.toString.apply(obj[key]) === '[object Object]') {
 				return new Observer(obj[key]);
 			}
 			this.watch(key,obj[key]);
