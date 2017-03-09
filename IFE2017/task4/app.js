@@ -1,8 +1,35 @@
-
-function Observer(data) {
-    this.data = data;
-    this.walk(data);
+function Observer(obj) {
+    this.el = document.querySelector(obj.el);
+    this.html = '';
+    this.walk(obj.data);
+    this.data = obj.data;
+    this.tempMatch(this.el.innerHTML, this.data);
     this.subscribers = {};
+}
+
+Observer.prototype.tempMatch = function (temp, data) {
+    var that = this;
+    var reg=/\{\{\{(.+?)\}\}\}|\{\{(.+?)\}\}/g;
+
+
+    this.html = temp;
+    temp.match(reg).forEach(function (item) {
+        var key = item.slice(2, item.length-2).trim();
+        that.tempReplace(key, data, item);
+    })
+
+    this.el.innerHTML = this.html;
+    this.html = '';
+}
+
+Observer.prototype.tempReplace = function (key, data, template) {
+    var index = key.indexOf('.');
+
+    if (index>0) {
+        this.tempReplace(key.slice(index + 1), data[key.slice(0, index)], template);
+    } else {
+        this.html = this.html.replace(template, data[key]);
+    }
 }
 
 //遍历数据
@@ -37,6 +64,7 @@ Observer.prototype.defineReactive = function(obj, key, val, path) {
         set: function (newVal) {
             if (newVal === val) return;
             val = newVal;
+            that.tempMatch(that.el.innerHTML, that.data);
             console.log('你设置了' + key,'新的' + key + '值为' +newVal);
             that.$notify(path || key);
             that.observe(newVal, path);
@@ -101,13 +129,12 @@ Observer.prototype.$getValue = function (exp) {
 
 
 let app2 = new Observer({
-    name: {
-        firstName: 'shaofeng',
-        lastName: 'liang'
-    },
-    age: {
-        a:25,
-        b:21
+    el: '#app',
+    data: {
+        user: {
+            name: 'youngwind',
+            age: 25
+        }
     }
 });
 
@@ -120,10 +147,10 @@ app2.$watch('age', function(oldAge, newAge) {
     console.log(`我的年纪变了`)
 });
 
-app2.data.name.firstName = 'hahaha';
+app2.data.name = 'hahaha';
 // 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
-app2.data.name.lastName = 'blablabla';
+app2.data.name= 'blablabla';
 // 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
 
-app2.data.age.a=45;
+app2.data.age=45;
 
