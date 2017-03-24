@@ -9,13 +9,13 @@ var xData = function() {
 }();
 
 var option = {
-  backgroundColor: '#344b58',
+  // backgroundColor: '#344b58',
   title: {
     text: 'ECharts入门',
     subtext: 'By YanYuanFE',
-    x: '4%',
+    // x: '4%',
     textStyle: {
-      color:'#fff',
+      color:'#344b58',
       fontSize:'22'
     },
     subtextStyle: {
@@ -41,7 +41,7 @@ var option = {
     }
   },
   legend: {
-    x: '4%',
+    // x: '4%',
     top: '11%',
     textStyle: {
       color: '#90979c',
@@ -49,20 +49,35 @@ var option = {
     data: ['空气温度','空气湿度','土壤湿度']
   },
   xAxis: {
-      data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+      type: 'category',
+      data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
   },
-  yAxis: {},
+  yAxis: {
+    type: 'value',
+    name: '温度',
+    min: 0,
+    max: 25,
+    interval: 5,
+    axisLabel: {
+      formatter: '{value} °C'
+    }
+  },
   series: [
     {
-      name: '销量',
+      name: '空气温度',
       type: 'bar',
-      data: [5, 20, 36, 10, 10, 20]
+      data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
     },
     {
-      name: '销量',
+      name: '空气湿度',
       type: 'line',
-      data: [5, 20, 36, 10, 10, 20]
+      data: [20, 10, 10, 20, 12, 22, 13,20, 24, 20, 16, 12]
     },
+    {
+      name: '土壤湿度',
+      type: 'line',
+      data: [5, 20, 16, 10, 10, 20, 20, 10, 10, 20, 12, 22,]
+    }
   ]
 };
 
